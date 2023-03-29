@@ -1,0 +1,8 @@
+FILEDIA 0
+OPEN !(strcat cur_dir "99_枠.dwg")
+REGEN
+QSAVE
+CLOSE
+OPEN !(strcat cur_dir "02_リストおよび鉄骨詳細.dwg")
+REGEN
+FILEDIA 1

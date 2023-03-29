@@ -1,0 +1,636 @@
+[DWF6Version]
+Ver=1
+[DWF6MinorVersion]
+MinorVer=1
+
+
+
+;   [DWF6Sheet:00_仕様書など-01]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=01
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-02]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=02
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-03]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=03
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-04]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=04
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-05]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=05
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-06]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=06
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-07]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=07
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-08]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=08
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-09]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=09
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-10]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=10
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-11]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=11
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-12]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=12
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-13]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=13
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-14]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=14
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-15]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=15
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-16]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=16
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-17]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=17
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-18]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=18
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   [DWF6Sheet:00_仕様書など-19]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=19
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-20]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=20
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-21]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=21
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-22]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=22
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-23]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=23
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-24]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=24
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-25]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=25
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-26]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=26
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-27]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=27
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-28]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=28
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-29]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=29
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+;   
+;   [DWF6Sheet:00_仕様書など-30]
+;   DWG=.\00_仕様書など.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\00_仕様書など.dwg
+
+
+;-----------------------------------------------------------------------------------
+;   
+;   [DWF6Sheet:01_軸伏図-01]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=01
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-02]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=02
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+
+;   [DWF6Sheet:01_軸伏図-03]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=03
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-04]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=04
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-05]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=05
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-06]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=06
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-07]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=07
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-08]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=08
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-09]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=09
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-10]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=10
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+
+;   [DWF6Sheet:01_軸伏図-11]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=11
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-12]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=12
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-13]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=13
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-14]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=14
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-15]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=15
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-16]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=16
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+
+;   [DWF6Sheet:01_軸伏図-17]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=17
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-18]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=18
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-19]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=19
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-20]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=20
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+
+;   [DWF6Sheet:01_軸伏図-21]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=21
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-22]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=22
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-23]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=23
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-24]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=24
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-25]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=25
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-26]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=26
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-27]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=27
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-28]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=28
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+
+;   [DWF6Sheet:01_軸伏図-29]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=29
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-30]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+
+;   [DWF6Sheet:01_軸伏図-31]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=31
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-32]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=32
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-33]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=33
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+
+;   [DWF6Sheet:01_軸伏図-34]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-35]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-36]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-37]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-38]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-39]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   [DWF6Sheet:01_軸伏図-40]
+;   DWG=.\01_軸伏図.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\01_軸伏図.dwg
+;   
+;   ;---------------------------------------------------------------------------------
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-01]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=01
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-02]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=02
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-03]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=03
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-04]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=04
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-05]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=05
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-06]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=06
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-07]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=07
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-08]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=08
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-09]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=09
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-10]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=10
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+[DWF6Sheet:02_リストおよび鉄骨詳細-11]
+DWG=.\02_リストおよび鉄骨詳細.dwg
+Layout=11
+Setup=全黒
+OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-12]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=12
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-13]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=13
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-14]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=14
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-15]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=15
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-16]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=16
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-17]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=17
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   ;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-18]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=18
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-19]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=19
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-20]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=20
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-21]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=21
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-22]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=22
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-23]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=23
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-24]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=24
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-25]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=25
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-26]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=26
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-27]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=27
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-28]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=28
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-29]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=29
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+;   ;   
+;   [DWF6Sheet:02_リストおよび鉄骨詳細-30]
+;   DWG=.\02_リストおよび鉄骨詳細.dwg
+;   Layout=30
+;   Setup=全黒
+;   OriginalSheetPath=.\02_リストおよび鉄骨詳細.dwg
+
+;----------------------------------------------------------------------------------
+
+
+[Target]
+Type=6
+DWF=.\99_PDF\新三芳案件
+OUT=.\99_PDF
+LocationType=2
+[SheetSet Properties]
+NoOfCopies=1
+PlotStampOn=FALSE
+PromptForDwfName=FALSE
+GenerateDwfName=FALSE
+IncludeLayer=FALSE
+[PdfOptions]
+ConvertTextToGeometry=FALSE
+LineMerge=FALSE
+EmbedTtf=TRUE
+ImageAntiAliasing=TRUE
+JPEGImageCompression=TRUE
+ExportHyperlinks=TRUE
+VectorResolution=2400
+RasterResolution=300
+PdfA=0

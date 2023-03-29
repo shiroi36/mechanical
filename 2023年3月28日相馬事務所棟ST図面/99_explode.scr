@@ -1,0 +1,12 @@
+; ブロックを分解
+EXPLODE pro ty insert
+
+; マルチテキストを分解
+EXPLODE pro ty mtext
+
+; フィールドのソリッドを削除 (色で識別)
+ERASE pro c rgb:192,192,192
+
+
+; 枠の外部参照をバインド
+-XREF b 99_枠
