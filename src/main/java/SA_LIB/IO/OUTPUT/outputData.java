@@ -228,7 +228,7 @@ public class outputData extends MATRIX_CALC{
         }
     }
     private void drawShearForceValue(Graphics g){
-        DecimalFormat df = new DecimalFormat("0.00E0");
+        DecimalFormat df = new DecimalFormat("0.0000E0");
         g.setColor(ShearColor);
         for(int i=0;i<member.length;i++){
             double[] p0=node[memb[i][0]];

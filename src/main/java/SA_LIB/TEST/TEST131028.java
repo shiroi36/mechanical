@@ -51,7 +51,7 @@ public class TEST131028 {
         MATRIX_CALC mc=new MATRIX_CALC();
         System.out.println();
         mc.PrintArray(model.getWholeP());
-        outputData out=new outputData(model,S,0.01,10);
+        outputData out=new outputData(model,S,5,1000);
         DesktopFrame frame=new DesktopFrame(out);
 ////        new outputEPS("abc.eps",out);
 ////        System.out.println(Math.sin(Math.PI/2));

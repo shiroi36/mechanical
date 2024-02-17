@@ -3,8 +3,9 @@
  * and open the template in the editor.
  */
 
-package GRAPH_LIB.XY;
+package GRAPH_LIB.CATEGORY;
 
+import GRAPH_LIB.XY.*;
 import GRAPH_LIB.GP.GPInterface;
 import GRAPH_LIB.GLInterface;
 import com.itextpdf.awt.PdfGraphics2D;
@@ -72,6 +73,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
 import java.awt.GridLayout;
+import org.jfree.chart.renderer.category.CategoryItemRenderer;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 
 /**
@@ -80,13 +84,29 @@ import java.awt.GridLayout;
  * result()メソッド内にて変更する(※印部分)という方法をとります。
  * @author keita
  */
-public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInterface{
+public class CATEGORYGRAPH extends JFrame implements MouseListener,GPInterface,GLInterface{
     
+    
+    public static void main(String[] args) {
+        CATEGORYGRAPH cg=new CATEGORYGRAPH(20);
+        cg.setValue(300, "A", "2001-10-10");
+        cg.setValue(400, "A", "2002-10-10");
+        cg.setValue(500, "A", "2003-10-10");
+        cg.setValue(200, "B", "2001-10-10");
+        cg.setValue(300, "B", "2002-10-10");
+        cg.setValue(400, "B", "2003-10-10");
+        cg.setLineWidth(0, 3.0f);
+        cg.setLinePlot(0, true, true, 20);
+        cg.setYtick(100,2);
+        cg.setYlabel("トン数(t)");
+        cg.PLOT();
+    }
     
     String title,Xlabel,Ylabel,display;//タイトルの大きさ等の設定はJAVADRIVEにて参照のこと
-    DefaultXYDataset data;//addするには初期化しておくことが必要
+    DefaultCategoryDataset data;//addするには初期化しておくことが必要
     double Xinterval,Yinterval,Xmin,Xmax,Ymin,Ymax;
-    int Xpartition,Ypartition,ind,Mnum;
+    int Xpartition,Ypartition,Mnum;
+//    int ind;
     ArrayList<Integer> LineStrokeSeries;
     ArrayList<BasicStroke> LineStroke;
     ArrayList<Integer> LineColorSeries;
@@ -94,7 +114,7 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
     boolean X1,Y1,X2,Y2,leg,LSS,LCS,T,
             LogX,LogY,mouseflag,mouseVerify,
             ticklabel,ConstFlag,PointFlag,arx,ary;
-    XYLineAndShapeRenderer shape;
+    CategoryItemRenderer shape;
     JLabel[] l;
     JFreeChart chart;
     ChartPanel cpanel;
@@ -107,13 +127,14 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
     private boolean invertedX;
     private boolean invertedY;
     private LabelGenerator lg;
+    private final ArrayList<String> SeriesIndex;
     
-    public XYGRAPH(){
+    public CATEGORYGRAPH(){
         this(20);
     }
-    public XYGRAPH(int fontsize){
+    public CATEGORYGRAPH(int fontsize){
         this.fontsize=fontsize;
-        shape=new XYLineAndShapeRenderer();
+        shape=new LineAndShapeRenderer();
         LineColor=new ArrayList<Color>();
         LineColorSeries=new ArrayList<Integer>();
         LineStroke=new ArrayList<BasicStroke>();
@@ -121,7 +142,8 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
         ConstInd=new ArrayList<Integer>();
         ConstSeries=new ArrayList<Integer>();
         ConstString=new ArrayList<String>();
-        data=new DefaultXYDataset();
+        SeriesIndex=new ArrayList<String>();
+        data=new DefaultCategoryDataset();
         mouseflag=true;
         mouseVerify=true;
         ConstFlag=false;
@@ -141,7 +163,7 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
         ary=true;
         invertedX=false;
         invertedY=false;
-        ind=0;
+//        ind=0;
         lg=null;
     }
 
@@ -220,105 +242,8 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
     public void setYlabel(String Ylabel){
         this.Ylabel=Ylabel;
     }
-    /**
-     *グラフでプロットする数値をセットするメソッドです。
-     *@param key プロットする数値を識別する凡例。数値でもストリング型でもなんでもいい
-     *@param XYvalue プロットする数値を長さ２の配列で入れる
-     * XYvalue[0][] X座標の数値配列
-     * XYvalue[1][] Y座標の数値配列
-     */
-    public void setValue(java.lang.Comparable key,double[][] XYvalue){
-        data.addSeries(key, XYvalue);
-        shape.setSeriesShapesVisible(ind, false);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        shape.setSeriesLinesVisible(ind, true);
-        this.setLineWidth(ind, 2.0f);
-        ind++;
-    }
+       
     
-    public void setValueConvolution(java.lang.Comparable key,double[][] XYvalue,int skip){
-        ArrayList<double[]> list=new ArrayList<double[]>();
-        int s=0;
-        for(int i=skip;i<XYvalue[0].length-skip;i++){
-            double x=XYvalue[0][i];
-            double y=XYvalue[1][i];
-            int n=1;
-            for (int j = 1; j < skip; j++) {
-                y+=XYvalue[1][i-j];
-                n++;
-            }
-            for (int j = 1; j < skip; j++) {
-                y+=XYvalue[1][i+j];
-                n++;
-            }
-            y/=n;
-            list.add(new double[]{x,y});
-        }
-                
-        double[][] val=new double[2][list.size()];
-        for(int i=0;i<list.size();i++){
-            val[0][i]=list.get(i)[0];
-            val[1][i]=list.get(i)[1];
-        }
-        data.addSeries(key, val);
-        shape.setSeriesShapesVisible(ind, false);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        shape.setSeriesLinesVisible(ind, true);
-        ind++;
-    }
-    
-    
-    
-    
-    public void setValue(java.lang.Comparable key,double[][] XYvalue,int skip){
-        ArrayList<double[]> list=new ArrayList<double[]>();
-        int s=0;
-        for(int i=0;i<XYvalue[0].length;i++){
-            s++;
-            if(s==skip){
-                list.add(new double[]{XYvalue[0][i],XYvalue[1][i]});
-                s=0;
-            }
-            if(i==XYvalue[0].length-1||i==0){
-                list.add(new double[]{XYvalue[0][i],XYvalue[1][i]});
-            }
-        }
-        double[][] val=new double[2][list.size()];
-        for(int i=0;i<list.size();i++){
-            val[0][i]=list.get(i)[0];
-            val[1][i]=list.get(i)[1];
-        }
-        data.addSeries(key, val);
-        shape.setSeriesShapesVisible(ind, false);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        shape.setSeriesLinesVisible(ind, true);
-        ind++;
-    }
-     public void setValue(java.lang.Comparable key,double[][] XYvalue,boolean linevisible,boolean CircleRectangle,int size,int skip){
-        ArrayList<double[]> list=new ArrayList<double[]>();
-        int s=0;
-        for(int i=0;i<XYvalue[0].length;i++){
-            s++;
-            if(s==skip){
-                list.add(new double[]{XYvalue[0][i],XYvalue[1][i]});
-                s=0;
-            }
-            if(i==XYvalue[0].length-1||i==0){
-                list.add(new double[]{XYvalue[0][i],XYvalue[1][i]});
-            }
-        }
-        double[][] val=new double[2][list.size()];
-        for(int i=0;i<list.size();i++){
-            val[0][i]=list.get(i)[0];
-            val[1][i]=list.get(i)[1];
-        }
-        data.addSeries(key, val);
-        shape.setSeriesShapesVisible(ind, true);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        if(CircleRectangle){
-            shape.setSeriesShape(ind, new java.awt.geom.Ellipse2D.Double(-size/2,-size/2,size,size), true);
-        }else{
-            shape.setSeriesShape(ind, new java.awt.Rectangle(-size/2,-size/2,size,size), true);
-        }
-        shape.setSeriesLinesVisible(ind, linevisible);
-        ind++;
-     }
     /**
      * グラフでプロットする数値をセットするメソッドです。
      * @param key   プロットする数値を識別する凡例。数値でもストリング型でもなんでもいい
@@ -328,95 +253,25 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
      * @param plotvisible   プロット点を表示するか否か
      * @param linevisible   プロットをつないでいる線を表示するか否か
      */
-     public void setValue(java.lang.Comparable key,double[][] XYvalue,boolean plotvisible,boolean linevisible){
-        data.addSeries(key, XYvalue);
-        shape.setSeriesShapesVisible(ind, plotvisible);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        shape.setSeriesShape(ind, new java.awt.Rectangle(-3,-3,6,6), true);
-        shape.setSeriesLinesVisible(ind, linevisible);
-        ind++;
-     }
-     public void setValue(java.lang.Comparable key,double[][] XYvalue,boolean linevisible,boolean CircleRectangle,int size){
-        data.addSeries(key, XYvalue);
-        shape.setSeriesShapesVisible(ind, true);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        if(CircleRectangle){
-            shape.setSeriesShape(ind, new java.awt.geom.Ellipse2D.Double(-size/2,-size/2,size,size), true);
-        }else{
-            shape.setSeriesShape(ind, new java.awt.Rectangle(-size/2,-size/2,size,size), true);
-        }
-        shape.setSeriesLinesVisible(ind, linevisible);
-        ind++;
-     }
-     public void setValue(java.lang.Comparable key,double[][] XYvalue,boolean plotvisible,boolean linevisible,boolean CircleRectangle){
-        data.addSeries(key, XYvalue);
-        shape.setSeriesShapesVisible(ind, plotvisible);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        if(CircleRectangle){
-            shape.setSeriesShape(ind, new java.awt.geom.Ellipse2D.Double(-6,-6,12,12), true);
-        }else{
-            shape.setSeriesShape(ind, new java.awt.Rectangle(-6,-6,12,12), true);
-        }
-        shape.setSeriesLinesVisible(ind, linevisible);
-        ind++;
+     public void setValue(double value,String series,String category){
+        data.addValue(value,series,category);
+
+         
      }
      public void removeAllValue(){
-        data=new DefaultXYDataset();
+        data=new DefaultCategoryDataset();
      }
-    /**
-     * プロットするデータを一気に入れるメソッド
-     * @param key　凡例を格納する配列
-     * @param Value　0番目の配列をX軸の値。次以降はY軸の値を入れる。
-     */
-    public void setValue(java.lang.Comparable[] key,double[][] Value){
-        for(int i=0;i<Value.length-1;i++){
-            double[][] XYvalue={Value[0],Value[i+1]};
-            data.addSeries(key[i], XYvalue);
-            shape.setSeriesShapesVisible(ind,false);
-            shape.setSeriesLinesVisible(ind, true);
-            ind++;
+     
+    public void setLinePlot(int ind, boolean visible, boolean CircleRectangle, int size) {
+
+        shape.setSeriesVisible(ind, visible);
+//        shape.setSeriesShapesVisible(ind, plotvisible);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
+        if (CircleRectangle) {
+            shape.setSeriesShape(ind, new java.awt.geom.Ellipse2D.Double(-1 * size / 2.0, -1 * size / 2.0, size, size));
+        } else {
+            shape.setSeriesShape(ind, new java.awt.Rectangle(-size / 2, -size / 2, size, size));
         }
-    }
-    public void setValue(String prefix,XYGRAPH graph){
-        DefaultXYDataset dset=graph.getXYDataset();
-        for (int i = 0; i < dset.getSeriesCount(); i++){
-            String key =prefix+(String)dset.getSeriesKey(i);
-            double[][] val=new double[2][dset.getItemCount(i)];
-            for (int s = 0; s < dset.getItemCount(i); s++) {
-                val[0][s]=dset.getXValue(i, s);
-                val[1][s]=dset.getYValue(i, s);
-            }
-            this.setValue(key, val);
-        }
-    }
-    public void setValue(java.lang.Comparable[] key,double[][][] Value){
-        for(int i=0;i<Value.length;i++){
-            this.setValue(key[i], Value[i]);
-        }
-    }
-    public void setValueReversed(java.lang.Comparable[] key,double[][] Value){
-        for(int i=0;i<Value.length-1;i++){
-            double[][] XYvalue={Value[i+1],Value[0]};
-            data.addSeries(key[i], XYvalue);
-            shape.setSeriesShapesVisible(ind,false);
-            shape.setSeriesLinesVisible(ind, true);
-            ind++;
-        }
-    }
-    public void setValue(java.lang.Comparable[] key,double[][] Value,Boolean ShapeVisible,Boolean LineVisible){
-        for(int i=0;i<Value.length-1;i++){
-            double[][] XYvalue={Value[0],Value[i+1]};
-            data.addSeries(key[i], XYvalue);
-            shape.setSeriesShapesVisible(ind,ShapeVisible);
-            shape.setSeriesLinesVisible(ind, LineVisible);
-            ind++;
-        }
-    }
-    public void setValueReversed(java.lang.Comparable[] key,double[][] Value,Boolean ShapeVisible,Boolean LineVisible){
-        for(int i=0;i<Value.length-1;i++){
-            double[][] XYvalue={Value[i+1],Value[0]};
-            data.addSeries(key[i], XYvalue);
-            shape.setSeriesShapesVisible(ind,ShapeVisible);
-            shape.setSeriesLinesVisible(ind, LineVisible);
-            ind++;
-        }
+
     }
     /**
      * 線の太さを決めるメソッド
@@ -433,66 +288,12 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
         LineStrokeSeries=new ArrayList<Integer>();
         LineStroke=new ArrayList<BasicStroke>();
         BasicStroke Line=new BasicStroke(width);
-        for (int i = 0; i < data.getSeriesCount(); i++) {   
+        for (int i = 0; i < data.getColumnCount(); i++) {   
             LineStrokeSeries.add(i);
             LineStroke.add(Line);   
         }
     }
-    /**
-     * オーバーライド。線の太さと色を一気に変えるメソッド。
-     * @param Series　設定する線の指定記号。凡例。
-     * @param width　設定する線の太さ。
-     * @param c　設定する線の色
-     */
-    public void setLineWidth(int SeriesIndex,float width,Color c){
-        BasicStroke Line=new BasicStroke(width);
-        LineStrokeSeries.add(SeriesIndex);
-        LineStroke.add(Line);
-        LineColorSeries.add(SeriesIndex);
-        LineColor.add(c);
-        LSS=true;
-        LCS=true;
-    }
-    /**
-     * 点線を設定するためのメソッド。
-     * @param Series　設定する線の識別記号。凡例。
-     * @param width　設定する線の太さ。
-     * @param dash　設定する線の破線パターン。詳しくはググレカス。
-     */
-    public void setDashLine(int SeriesIndex,float width, float[] dash){
-        BasicStroke Line=new BasicStroke(width,BasicStroke.CAP_BUTT,BasicStroke.JOIN_MITER,1.0f,dash,0.0f);
-        //※詳細に点線を変えたければ他の変数をここで変えるべし。
-        LineStrokeSeries.add(SeriesIndex);
-        LineStroke.add(Line);
-        LSS=true;
-    }
-    /**
-     * 点線を設定するためのメソッド。
-     * @param Series　設定する線の識別記号。凡例。
-     * @param width　設定する線の太さ。
-     * @param dash　設定する線の破線パターン。詳しくはググレカス。
-     * @param c　設定する線の色
-     */
-    public void setDashLine(int SeriesIndex,float width, float[] dash,Color c){
-        BasicStroke Line=new BasicStroke(width,BasicStroke.CAP_BUTT,BasicStroke.JOIN_MITER,1.0f,dash,0.0f);
-        //詳細に点線を変えたければ他の変数をここで変えるべし。
-        LineStrokeSeries.add(SeriesIndex);
-        LineStroke.add(Line);
-        LineColorSeries.add(SeriesIndex);
-        LineColor.add(c);
-        LSS=true;
-        LCS=true;
-    }
-    /**
-     * 線の色を決めるメソッド
-     * @param Series　色を変える線の識別記号。凡例。
-     * @param C　設定する線の色。
-     */
-    public void setLineColor(int SeriesIndex,Color C){
-        LineColorSeries.add(SeriesIndex);
-        LineColor.add(C);
-        LCS=true;
-    }
+    
     public void setTickLabel(boolean ticklabel){
         this.ticklabel=ticklabel;
     }
@@ -517,14 +318,14 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
     public void result(){
         //////////////グラフに関する内容/////////////////////////////////////////////////
         ChartFactory.setChartTheme(StandardChartTheme.createLegacyTheme());
-        chart=ChartFactory.createXYLineChart(title, Xlabel, Ylabel, data, PlotOrientation.VERTICAL, true, true, true);
+        chart=ChartFactory.createLineChart(title, Xlabel, Ylabel, data, PlotOrientation.VERTICAL, true, true, true);
         chart.setBackgroundPaint(Color.white);//※外の背景の色を設定するときはこれ※
-        chart.getXYPlot().setOutlineVisible(true); //※外枠を消したいときはこれ※
-        chart.getXYPlot().setDomainGridlinePaint(Color.BLACK);//※X軸側のグリットライン の色を設定する時はこれ※
-        chart.getXYPlot().setDomainGridlinesVisible(true);//※X軸側のグリットラインを付ける又は消す時はこれ※
-        chart.getXYPlot().setRangeGridlinePaint(Color.BLACK);//※Y軸側のグリットライン の色を設定する時はこれ※
-        chart.getXYPlot().setRangeGridlinesVisible(true);//※Y軸側のぐりっとラインを付ける又は消す時はこれ※
-        chart.getXYPlot().setBackgroundPaint(Color.white);//※プロットする空間の背景の色を変更したい時はこれ※
+        chart.getCategoryPlot().setOutlineVisible(true);//※外枠を消したいときはこれ※
+        chart.getCategoryPlot().setDomainGridlinePaint(Color.BLACK);//※X軸側のグリットライン の色を設定する時はこれ※
+        chart.getCategoryPlot().setDomainGridlinesVisible(true);//※X軸側のグリットラインを付ける又は消す時はこれ※
+        chart.getCategoryPlot().setRangeGridlinePaint(Color.BLACK);//※Y軸側のグリットライン の色を設定する時はこれ※
+        chart.getCategoryPlot().setRangeGridlinesVisible(true);//※Y軸側のぐりっとラインを付ける又は消す時はこれ※
+        chart.getCategoryPlot().setBackgroundPaint(Color.white);//※プロットする空間の背景の色を変更したい時はこれ※
 //        barrenderer.setLabelGenerator(new LabelGenerator()); 
 //        fontsize=40;
         if(T==true){
@@ -546,31 +347,16 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
 
 
         /////Ｘ軸に関する内容////////////////////////////////////////////////////////////
-        NumberAxis xaxis;//domeinaxis…Ｘ軸
-        if(LogX==true){xaxis=new LogarithmicAxis(Xlabel);}
-        else{xaxis=new NumberAxis(Xlabel);}
-        xaxis.setAutoRangeIncludesZero(arx);
+        CategoryAxis xaxis=new CategoryAxis(Xlabel);//domeinaxis…Ｘ軸
         xaxis.setVisible(true);//軸を全て消すかどうか※
         xaxis.setTickLabelsVisible(true);//ラベルを表示するか否か
         xaxis.setMinorTickMarksVisible(true);//ちっちゃい目盛を表示するか否か※
         xaxis.setTickMarksVisible(true);//大きな目盛を表示するか否か※
-        if(X1==true){
-            DecimalFormat Xformat=new DecimalFormat();
-            NumberTickUnit Xtick=new NumberTickUnit(Xinterval,Xformat,Xpartition);//目盛について。最初の引数は大きな目盛の間隔を表すdouble型。二つ目は意味不明で三つ目の引数は大きな目盛間で小さな目盛を何等分入れるかというint型※
-            xaxis.setTickUnit(Xtick);//ここまでが目盛間隔についての考察
-            X1=false;
-        }
-        if(X2==true){
-            xaxis.setRange(Xmin, Xmax);
-            X2=false;
-        }else{
-            xaxis.setAutoRange(true);
-        }//上限下限を設定する。
         xaxis.setLabelFont(XYlabelFont);
         xaxis.setTickLabelFont(XYtickFont);
-        xaxis.setInverted(invertedX);
+        xaxis.setCategoryLabelPositions(CategoryLabelPositions.DOWN_90);
         xaxis.setTickLabelsVisible(ticklabel);//目盛の数値を消すかどうかということ
-        chart.getXYPlot().setDomainAxis(xaxis);
+        chart.getCategoryPlot().setDomainAxis(xaxis);
         /////Y軸に関する内容///////////////////////////////////////////////////////////////
         NumberAxis yaxis;//rangeaxis…Y軸
         if(LogY==true){yaxis=new LogarithmicAxis(Ylabel);}
@@ -596,7 +382,7 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
         yaxis.setTickLabelFont(XYtickFont);
         yaxis.setInverted(invertedY);
         yaxis.setTickLabelsVisible(ticklabel);//目盛の数値を消すかどうかということ
-        chart.getXYPlot().setRangeAxis(yaxis);
+        chart.getCategoryPlot().setRangeAxis(yaxis);
         /////////////////線幅や線の形状に関する内容////////////////////////
         if(LSS==true){
             for(int i=0;i<LineStrokeSeries.size();i++){
@@ -611,15 +397,6 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
         }
 //        StandardXYItemLabelGenerator sig=new StandardXYItemLabelGenerator();
         if(ConstFlag){
-            int[] item=new int[ConstInd.size()];
-            int[] seri=new int[ConstSeries.size()];
-            String[] lab=new String[ConstString.size()];
-            for(int i=0;i<item.length;i++){
-                item[i]=ConstInd.get(i);
-                seri[i]=ConstSeries.get(i);
-                lab[i]=ConstString.get(i);
-            }
-            shape.setBaseItemLabelGenerator(new LabelGenerator(seri,item,lab));
             shape.setBaseItemLabelFont(new Font("KonatuTohaba",Font.PLAIN,fontsize));
             shape.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.INSIDE10,
                     TextAnchor.BOTTOM_LEFT,
@@ -627,7 +404,7 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
                     0));
             shape.setBaseItemLabelsVisible(true);
         }
-        chart.getXYPlot().setRenderer(shape);
+        chart.getCategoryPlot().setRenderer(shape);
                 
 
         cpanel =new ChartPanel(chart);
@@ -637,10 +414,10 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
         }
         if(mouseflag){
             mouseflag=false;
-            Mnum=data.getSeriesCount();
+            Mnum=data.getColumnCount();
         }
         l=new JLabel[Mnum];
-        Font font=new Font("KonatuTohaba",0,10);
+        Font font=new Font("Osaka",0,10);
         for(int i=0;i<Mnum;i++){
             l[i]=new JLabel();
             l[i].setFont(font);
@@ -652,26 +429,10 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
         else this.getContentPane().add(cpanel);
 //        this.getContentPane().add(cpanel,BorderLayout.CENTER);
     }
-    public void setYConstantValue(double xmin,double xmax,double YValue,int drawedItem,String label){
-        ConstFlag=true;
-        ConstSeries.add(ind);
-        this.setValue(label, new double[][]{{xmin,xmax},{YValue,YValue}});
-        ConstInd.add(drawedItem);
-        ConstString.add(label);
-    }
-    public void addLabelinGraph(double[][] XYcoordinate,String[] label){
-        ConstFlag=true;
-        for(int i=0;i<XYcoordinate[0].length;i++){
-            ConstSeries.add(ind);
-            ConstInd.add(i);
-            ConstString.add(label[i]);
-        }
-        this.setValue(label[0],XYcoordinate,false,false);
-    }
     public int getSeriesCount(){
-        return data.getSeriesCount();
+        return data.getColumnCount();
     }
-    public DefaultXYDataset getXYDataset(){
+    public DefaultCategoryDataset getXYDataset(){
         return data;
     }
     private void setPanelWithToolBar(ChartPanel c,JLabel[] l){
@@ -719,54 +480,6 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
     }
     public void mouseClicked(MouseEvent e){
         cpanel.mouseClicked(e);
-        int x =e.getX();
-        int y =e.getY();
-        Rectangle2D plotArea = cpanel.getScreenDataArea();
-        XYPlot plot = (XYPlot) chart.getPlot(); // your plot
-        double min=0;
-        int minindex=0;
-        double[] snapX=new double[Mnum];
-        double[] snapY=new double[Mnum];
-        String snapvalue="<html>"+"GRAPH TITLE:\t"+this.getTitle();
-        for(int i=0;i<Mnum;i++){
-            boolean flag=false;
-            for(int s=0;s<data.getItemCount(i);s++){
-                double a=plot.getDomainAxis().valueToJava2D(data.getXValue(i, s), plotArea, plot.getDomainAxisEdge());
-//                if(Math.abs(a-x)>25)continue;
-                double b=plot.getRangeAxis().valueToJava2D(data.getYValue(i, s), plotArea, plot.getRangeAxisEdge());
-                double length=Math.pow(a-x, 2)+Math.pow(b-y, 2);
-                if(flag==false){
-                    flag=true;
-                    min=length;
-                    minindex=s;
-                    continue;
-                }else if(length<min){
-                    min=length;
-                    minindex=s;
-                    continue;
-                }
-            }
-            snapX[i]=data.getXValue(i, minindex);
-            snapY[i]=data.getYValue(i, minindex);
-            snapvalue+="<br>KEY INDEX   "+i+"; INDEX   "+minindex+"   X座標 "+snapX[i]+"    Y座標 "+snapY[i]+"\n";
-            l[i].setText("KEY INDEX   "+i+"; INDEX   "+minindex+"   X座標 "+snapX[i]+"    Y座標 "+snapY[i]);
-        }
-        if(status!=null){
-//            status=new JLabel();
-            status.setFont(new Font("KonatuTohaba",0,20));
-            status.setText(snapvalue);
-        }else{
-            System.out.println(snapvalue);
-            System.out.println();
-        }
-        int pind=ind;
-        System.out.println(ind+"th plot will shaped!!!!!");
-        data.addSeries(pind, new double[][]{snapX,snapY});
-        shape.setSeriesShapesVisible(pind, true);//※プロット点を表示するか否かということ。逆に線を表示するか否かというメソッドもXYLineAndShapeRendererに存在するので相関図とか書きたかったらそこらへんをいじるといいよ。
-        shape.setSeriesLinesVisible(pind, false);
-        shape.setSeriesPaint(pind, Color.cyan);
-        shape.setSeriesShape(ind, 
-                new java.awt.geom.Ellipse2D.Double(-10,-10,20,20), true);
 //        this.setPanelWithToolBar(cpanel, text);
 //        this.update();
     }
@@ -850,53 +563,6 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
     }
     
     
-    public void OUTPUTasSVG(String pass,int width,int height,int skip){
-        int num=data.getSeriesCount();
-        ArrayList<double[][]> vals=new ArrayList<double[][]>();
-        ArrayList<Comparable> keys=new ArrayList<Comparable>();
-        for (int i = 0; i < num; i++) {
-            int num2=data.getItemCount(i);
-            ArrayList<double[]> vals2=new ArrayList<double[]>();
-            int ind4=0;
-//            System.out.println("series "+i);
-            for (int j = 0; j < num2; j++) {
-                if(ind4==skip||ind4==0||ind4==num2-1){
-//                    System.out.println("value_added");
-                    ind4=0;
-                    vals2.add(new double[]{data.getXValue(i, j),
-                        data.getYValue(i, j)});
-                }
-                ind4++;
-            }
-            double[][] vals3=new double[2][vals2.size()];
-            for (int j = 0; j < vals2.size(); j++) {
-                vals3[0][j]=vals2.get(j)[0];
-                vals3[1][j]=vals2.get(j)[1];
-            }
-            keys.add(data.getSeriesKey(i));
-            vals.add(vals3);
-        }
-        data=new DefaultXYDataset();
-        for (int i = 0; i < vals.size(); i++) {
-            data.addSeries(keys.get(i), vals.get(i));
-        }
-        this.OUTPUTasSVG(pass, width, height);
-    }
-    
-    
-    public void OUTPUTasEPS(String pass,int width,int height){
-        this.result();
-        try{
-            String epstitle="graph";
-            OutputStream os=new FileOutputStream(pass);
-            BufferedOutputStream bos=new BufferedOutputStream(os);
-            EpsGraphics2D eps2d=new EpsGraphics2D(epstitle,bos,0,0,width,height);
-            Rectangle2D r2d=new Rectangle(width,height);
-            this.chart.draw(eps2d, r2d);
-            eps2d.close();
-            bos.close();
-        }catch(IOException ioe){ioe.printStackTrace();}
-    }
     public void OUTPUTasPDF(String pass,int width,int height){
         this.result();
         try{int w=(int)PageSize.A4.getWidth();
@@ -913,12 +579,15 @@ public class XYGRAPH extends JFrame implements MouseListener,GPInterface,GLInter
             document.close();
         }catch(Exception ioe){ioe.printStackTrace();}
     }
+    
     public void setPointFlag(boolean true_with_toolbar){
         PointFlag=true_with_toolbar;
     }
+    
     public void setFontSize(int fontsize){
         this.fontsize=fontsize;
     }
+    
     public void PLOT(){
         this.result();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

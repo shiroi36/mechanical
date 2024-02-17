@@ -55,7 +55,7 @@ public class TEST15051111 {
         MATRIX_CALC mc=new MATRIX_CALC();
         System.out.println();
         mc.PrintArray(model.getWholeP());
-        double S=100;
+        double S=1000;
         AbstractMember [] minfo=model.getMemberInfo();
         for (int i = 0; i < minfo.length; i++) {
             AbstractMember minfo1 = minfo[i];
