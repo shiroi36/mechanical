@@ -38,12 +38,13 @@ ECHO +----[%INPUT_STR%]----+
 cd %path2%
 git fetch origin master
 git reset --hard origin/master
+del src\* /s /q
 cd %path1%
 
 
 xcopy * %path2%* /e
 rmdir /s /q  %path2%\target
-rmdir /s /q  %path2%\log
+rmdir /s /q  %path2%\fig
 
 
 cd %path2%
@@ -51,6 +52,11 @@ git add .
 git commit -m %INPUT_STR%
 git push origin master
 explorer %path2%
+
+
+cd %path1%
+git fetch origin master
+git reset --hard origin/master
 
 @ECHO OFF
 

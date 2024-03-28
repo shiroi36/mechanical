@@ -84,7 +84,7 @@ public class XLS_OPE2 implements Closeable{
                 val=cell.getStringCellValue();
             }
 
-            if (val.trim().isBlank()) {
+            if (val.trim().isEmpty()) {
                 break;
             }
             num++;
